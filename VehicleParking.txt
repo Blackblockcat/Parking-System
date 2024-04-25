@@ -1,0 +1,84 @@
+package com.mycompany.vehicleparking;
+
+//import java.util.Scanner;
+import java.util.Scanner;
+import javax.swing.JOptionPane;
+
+public class VehicleParking {
+public static int sizeOfParkingArea=100; 
+public static String parkingAreaarray[]=new String[100];
+public static double iDparking[]=new double [100];
+	public static void main(String[] args) {
+                for (int i=0;i<100;i++){parkingAreaarray[i]="-1";iDparking[i]=-1;}
+                JOptionPane.showMessageDialog(null, "Welcome in our parking area (:", "Welcome Message ^-^", JOptionPane.INFORMATION_MESSAGE);
+                while (true){
+		Scanner input=new Scanner(System.in);
+	        System.out.println("How can we help you \n1-addingVehicle \n2-remove your Vehicle\n3-show parking status\n4-end program");
+	        int choose;
+	        choose = input.nextInt();// 1 2 3 4 0 7
+	        if(choose==4){int q=JOptionPane.showConfirmDialog(null, "Do You like our Project ");return ;}
+	        while (choose>3||choose<1)
+	        {
+	            System.out.println("Invalid number ! retry");
+	            System.out.println("1-addingVehicle \n2-remove your Vehicle\n3-show parking status\n$-end program");
+	            choose = input.nextInt();
+	            if(choose==4){
+                        int q=JOptionPane.showConfirmDialog(null, "Do You like our Project ");
+                        return;
+                    }	
+	        }int type=-1;
+	        if(choose==1)
+	        {
+	        	while (type<=0||type>4)
+	        	{
+	        	    System.out.println("1-Truck\n2-Bus\n3-Car\n4-MotorCycle\n");
+	        	    type=input.nextInt();// 1
+	        	}
+                        Vehicle a=new Vehicle();
+	        	a.addVehicle(type);
+	        }
+	        else if(choose==2)
+	        {
+                    System.out.println("please write your Vehicle id :");
+                    String x=input.next();
+	            Vehicle a=new Vehicle();
+	       	    a.removeVehicle(x);
+	        }
+	        else 
+	        {
+                    int start=0,c=0;
+                    String space="-1",temp=parkingAreaarray[0];
+	        	for (int i=1;i<99;i++)
+                        {
+                            if(parkingAreaarray[i].equals(temp))
+                            {
+                                c++;
+                            }
+                            else 
+                            {
+                                if(temp.equals(space))
+                                    System.out.println("there are free space from "+(start+1)+" : "+(i));
+                                else {
+                                    if(i-start==5)
+                                    System.out.println("there are parked area for Car with id : "+temp+" from "+(start+1)+" : "+i);
+                                    else if(i-start==7)System.out.println("there are parked area for Truck with id : "+temp+" from "+(start+1)+" : "+i);
+                                    else if(i-start==10)System.out.println("there are parked area for Bus with id : "+temp+" from "+(start+1)+" : "+i);
+                                    else if(i-start==2)System.out.println("there are parked area for MotorCycle with id : "+temp+" from "+(start+1)+" : "+i);
+                                }
+                                temp=parkingAreaarray[i];
+                                start=i;
+                                c=0;
+                            }
+                        }for (int i=0;i<=99;i++) 
+                           System.out.println(parkingAreaarray[i]+" "+iDparking[i]);
+                        if((parkingAreaarray[99].equals(space)))
+                        System.out.println("there are free spaces from "+(start+1)+" to "+(100));
+                        
+                        //System.out.println("there are free spaces from "+(100-c)+" to "+(100));
+                        //else System.out.println("hi");
+	        }
+        }    
+	}
+        
+
+}

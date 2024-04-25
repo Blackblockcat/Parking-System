@@ -1,0 +1,249 @@
+package com.mycompany.vehicleparking;
+import static com.mycompany.vehicleparking.VehicleParking.iDparking;
+import static com.mycompany.vehicleparking.VehicleParking.parkingAreaarray;
+import static com.mycompany.vehicleparking.VehicleParking.sizeOfParkingArea;
+import java.util.Scanner;
+import static java.lang.Math.ceil;
+import javax.swing.JOptionPane;// public protected (sub) (d) private  
+public class Vehicle {
+    Scanner input=new Scanner(System.in);
+    public Vehicle(){/*System.out.println("Cons super here");*/}
+    protected String Id=new String();
+    protected int length;
+    public Vehicle(String Id,int length){this.Id=Id;this.length=length;}
+    protected int calcMoney(double k)
+    {
+        //System.out.println("Super is here");
+        return (int) (k); 
+    }
+    public  void addVehicle(int type)
+    {
+        if(type==1)
+	        	{
+                                System.out.println("Please write the Truck id :");
+	        		String x=input.next();
+                                Truck truck=new Truck(x);//st 0   
+                                int countSpace=0,start=0;// car  0 1 2 3 4 5 6 
+                                                         //array 0 1 0 0 0 0 0    
+                                                         //  cs  1 0 1 2 3 4 5  
+                                double startTime;// (1,5 -  2.5) ;
+                                System.out.println("Please write the parking start time :");
+                                startTime=input.nextDouble();
+                                boolean check=false,valid_id=true;
+                                String space="-1";
+                                for (int i=0;i<sizeOfParkingArea;i++)//;
+                                { 
+                                    if(parkingAreaarray[i].equals(x))
+                                    { valid_id=false;break;}
+                                    if(!parkingAreaarray[i].equals(space)) {
+                                        countSpace=0;start++;
+                                    } else ++countSpace;// 
+                                    if(countSpace==truck.getLength())
+                                    {
+                                        check=true;
+                                        break;
+                                    }
+                                        
+                                }
+                                if(check==true&&valid_id==true)
+                                {
+                                    for (int i=start;i<start+countSpace;i++)
+                                    {
+                                        parkingAreaarray[i]=truck.getId();
+                                        iDparking[i]=startTime;
+                                    }
+                                    System.out.println("your Truck is parked successfully '-^");
+                                }
+                                else 
+                                {
+                                    if(valid_id)
+                                     System.out.println("Sorry we haven't suitable area for your Truck ):");
+                                    else {System.out.println("Sorry this id is invalid please enter your id correctly");addVehicle(type);}
+                                }
+	        	}
+        else if(type==2)
+                        {
+                                System.out.println("Please write the Bus id :");
+	        		String x=input.next();
+                                Bus bus=new Bus(x);
+                                int countSpace=0,start=0;
+                                double startTime;
+                                System.out.println("Please write the parking start time :");
+                                startTime=input.nextDouble();
+                                boolean check=false,valid_id=true;
+                                String space="-1";
+                                for (int i=0;i<sizeOfParkingArea;i++)
+                                {
+                                    if(parkingAreaarray[i].equals(x))
+                                    { valid_id=false;break;}
+                                    if(!parkingAreaarray[i].equals(space)) {
+                                        countSpace=0;start++;
+                                    } else ++countSpace;
+                                    if(countSpace==bus.getLength())
+                                    {
+                                        check=true;
+                                        break;
+                                    }
+                                        
+                                }
+                                if(check==true&&valid_id==true)
+                                {
+                                    for (int i=start;i<start+countSpace;i++)
+                                    {
+                                        parkingAreaarray[i]=bus.getId();
+                                        iDparking[i]=startTime;
+                                    }
+                                    System.out.println("your Bus is parked successfully '-^");
+                                }
+                                else 
+                                {
+                                    if(valid_id)
+                                    System.out.println("Sorry we haven't suitable area for your Bus ):");
+                                    else {System.out.println("Sorry this id is invalid please enter your id correctly");addVehicle(type);}
+                                }
+                        }       
+        else if(type==3)
+                        {
+                                System.out.println("Please write the Car id :");
+	        		String x=input.next();
+                                Car car=new Car(x);
+                                int countSpace=0,start=0;
+                                double startTime;
+                                System.out.println("Please write the parking start time :");
+                                startTime=input.nextDouble();
+                                boolean check=false,valid_id=true;
+                                String space="-1";
+                                for (int i=0;i<sizeOfParkingArea;i++)
+                                {
+                                    if(parkingAreaarray[i].equals(x))
+                                    { valid_id=false;break;}
+                                    if(!parkingAreaarray[i].equals(space)) {
+                                        countSpace=0;start++;
+                                    } else ++countSpace;
+                                    if(countSpace==car.getLength())
+                                    {
+                                        check=true;
+                                        break;
+                                    }
+                                        
+                                }
+                                if(check==true&&valid_id==true)
+                                {
+                                    for (int i=start;i<start+countSpace;i++)
+                                    {
+                                        parkingAreaarray[i]=car.getId();
+                                        iDparking[i]=startTime;
+                                    }
+                                    System.out.println("your Car is parked successfully '-^");
+                                }
+                                else 
+                                {
+                                    if(valid_id)
+                                    System.out.println("Sorry we haven't suitable area for your Car ):");
+                                    else {System.out.println("Sorry this id is invalid please enter your id correctly");addVehicle(type);}
+                                }                        
+    }
+        else 
+                        {
+                                System.out.println("Please write the motorcycle id :");
+	        		String x=input.next();
+                                MotorCycle motorcycle=new MotorCycle(x);
+                                int countSpace=0,start=0;
+                                double startTime;
+                                System.out.println("Please write the parking start time :");
+                                startTime=input.nextDouble();
+                                boolean check=false,valid_id=true;
+                                String space="-1";
+                                for (int i=0;i<sizeOfParkingArea;i++)
+                                {
+                                    if(parkingAreaarray[i].equals(x))
+                                    { valid_id=false;break;}
+                                    if(!parkingAreaarray[i].equals(space)) {
+                                        countSpace=0;start++;
+                                    } else ++countSpace;
+                                    if(countSpace==motorcycle.getLength())
+                                    {
+                                        check=true;
+                                        break;
+                                    }
+                                        
+                                }
+                                if(check==true&&valid_id==true)
+                                {
+                                    for (int i=start;i<start+countSpace;i++)
+                                    {
+                                        parkingAreaarray[i]=motorcycle.getId();
+                                        iDparking[i]=startTime;
+                                    }
+                                    System.out.println("your MotorCycle is parked successfully '-^");
+                                }
+                                else 
+                                {
+                                    if(valid_id)
+                                    System.out.println("Sorry we haven't suitable area for your MotorCycle ):");
+                                    else {System.out.println("Sorry this id is invalid please enter your id correctly");addVehicle(type);}
+                                }
+                        }
+    }
+    public  void removeVehicle(String id)
+    {
+         //System.out.println("Write the clock now :");
+         int c=0;
+         double gg=-1;
+         for (int i=0;i<100;i++)
+         {
+             if(id.equals(parkingAreaarray[i]))
+             {
+                 c++;
+                 if(c==1){gg=iDparking[i];}
+                 parkingAreaarray[i]="-1";
+                 iDparking[i]=-1;
+             }
+         }
+         if(c>0){
+         System.out.println("enter the time in hours now  ");
+         double k=input.nextDouble();
+             //System.out.println(k+" "+iDparking[gg]);
+         k-=gg;
+             //System.out.println(k);
+         System.out.print("The total cost is ");
+         if(c==7)
+         {
+            Vehicle truck=new Truck();
+             System.out.print(truck.calcMoney(k));
+         }
+         else if (c==10)
+         {
+             Vehicle bus=new Bus();
+            System.out.print(bus.calcMoney(k));
+         }
+         else if (c==5)
+         {
+             Vehicle car=new Car();
+            System.out.print(car.calcMoney(k));
+         }
+         else if (c==2)
+         {
+                Vehicle motorcycle=new MotorCycle();
+                System.out.print(motorcycle.calcMoney(k));
+         }
+         else System.out.print("0");
+         System.out.println("$");}
+    }
+  
+      public  String getId() {
+        return Id;
+    }
+    public void setId(String Id) {
+        this.Id = Id;
+    }
+
+    public int getLength() {
+        return length;
+    }
+
+    public void setLength(int length) {
+        this.length = length;
+    }
+    
+}

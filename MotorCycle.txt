@@ -1,0 +1,36 @@
+
+package com.mycompany.vehicleparking;
+
+import static java.lang.Math.ceil;
+
+public class MotorCycle extends Vehicle{
+
+    private final static int size=2;
+    MotorCycle(){}
+    public MotorCycle(String id){super(id,size);}
+    @Override
+    protected int calcMoney(double k) {
+        return super.calcMoney(ceil (k)*5); 
+    }
+
+    
+    public String getId() {
+        return Id;
+    }
+
+    
+    public void setId(String Id) {
+        this.Id = Id;
+    }
+
+    
+    public int getLength() {
+        return length;
+    }
+
+    
+    public void setLength(int length) {
+        this.length = length;
+    }
+    
+}
